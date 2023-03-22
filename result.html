@@ -1,0 +1,92 @@
+<style>
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+<!--  background-color: #111;-->
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+<!--  background-color: red;-->
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #FFF;
+}
+
+th {
+    background-color: #8900FD;
+}
+
+.EnumTable {
+    width: 30%;
+}
+
+.DetectorInfoTable {
+    width: 50%;
+}
+
+.ObjectTable {
+    width: 100%;
+}
+
+</style>
+
+<div class="split left">
+<!--  <div class="centered">-->
+    <iframe
+      src="new.html"
+      name="targetframe"
+      allowTransparency="true"
+      scrolling="yes"
+      width='100%'
+      height='100%'
+    >
+
+    </iframe>
+<!--  </div>-->
+</div>
+
+<div class="split right" >
+<!--  <div class="centered">-->
+    <iframe
+      src="old.html"
+      name="test"
+      allowTransparency="true"
+      scrolling="yes"
+      width='100%'
+      height='100%'
+    >
+
+    </iframe>
+<!--  </div>-->
+</div>
