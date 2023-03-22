@@ -90,7 +90,7 @@ def delete_tags(item):
 
 def delete_none_rows(data:pd.DataFrame):
     """
-    deleting rows with one value and all other empty
+    deleting rows with one value and all others empty
     :param data:
     :return:
     """
