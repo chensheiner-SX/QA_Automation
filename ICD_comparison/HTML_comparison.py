@@ -5,8 +5,7 @@ import numpy as np
 import argparse
 import webbrowser
 
-
-result_file="""
+result_file = """
 <style>
 /* Split the screen in half */
 .split {
@@ -84,24 +83,28 @@ th {
 
 </div>
 """
+
+
 def delete_tags(item):
     output = item.string
     return output
 
-def delete_none_rows(data:pd.DataFrame):
+
+def delete_none_rows(data: pd.DataFrame):
     """
     deleting rows with one value and all others empty
     :param data:
     :return:
     """
-    delete_ind=[]
+    delete_ind = []
     for i, row in data.iterrows():
-        num_nones=len(row)-row.count()
-        if num_nones>=0.75*len(row):
+        num_nones = len(row) - row.count()
+        if num_nones >= 0.75 * len(row):
             delete_ind.append(i)
-    data.drop(delete_ind,inplace=True)
-    data=data.reset_index(drop=True)
+    data.drop(delete_ind, inplace=True)
+    data = data.reset_index(drop=True)
     return data
+
 
 def get_data(path):
     with open(path) as s:
@@ -109,10 +112,10 @@ def get_data(path):
     h2_list = soup.find_all('h2')
     df_list = pd.read_html(path)
     h2_list = [delete_tags(item) for item in h2_list]
-    style= soup.find_all('style')
+    style = soup.find_all('style')
 
     df_dict = {h2_list[i]: df_list[i] for i in range(len(h2_list))}
-    return df_dict,style
+    return df_dict, style
 
 
 def create_html_string(df):
@@ -120,6 +123,10 @@ def create_html_string(df):
     html_string = ''
     for header, data in df.items():
         header_str = f"\n<h2>{header}</h2>\n"
+        if isinstance(data, str):
+            html_string += header_str
+            html_string += f"\n<h4>{data}</h4>\n"
+            continue
         for col in data.columns:
             if 'Unnamed' in str(col):
                 data.rename(columns={col: " "}, inplace=True)
@@ -137,86 +144,84 @@ def create_html_string(df):
     return html_string
 
 
-
 def main(opt):
     # path_latest = "new_ICD_file.html"
     path_latest = opt.new
     # path_prev = "old_ICD_file.html"
-    path_prev =  opt.old
-    latest_model,style = get_data(path_latest)
-    prev_model,_ = get_data(path_prev)
+    path_prev = opt.old
+    latest_model, style = get_data(path_latest)
+    prev_model, _ = get_data(path_prev)
     empty = pd.DataFrame()
     output_data_latest = {}
     output_data_prev = {}
-    output_details = {}
+
     for header in prev_model:
         # header = 'Stream GstSink configuration'
-
-        data_prev = prev_model.get(header, empty) # every header has a tables corresponding to it
+        data_prev = prev_model.get(header, empty)  # every header has a tables corresponding to it
         data_latest = latest_model.get(header, empty)
         data_prev = data_prev.astype(object).replace(np.nan, None)
         data_latest = data_latest.astype(object).replace(np.nan, None)
-        data_latest=delete_none_rows(data_latest)
-        data_prev=delete_none_rows(data_prev)
+        data_latest = delete_none_rows(data_latest)
+        data_prev = delete_none_rows(data_prev)
 
-        assert not data_prev.equals(empty), f"Every Header should have a tables corresponding to it, {header} in previous version"
-        changed_data_latest = pd.DataFrame(columns=data_latest.columns)
-        changed_data_prev = pd.DataFrame(columns=data_prev.columns)
-        # if data_prev.equals(data_latest): # same data
-        #     print(f"same data in header: {header}")
+        assert not data_prev.equals(
+            empty), f"Every Header should have a tables corresponding to it, {header} in previous version"
+
         if data_latest.equals(empty):  # header was deleted in latest deployment
             print("header deleted in latest version", header)
-            changed_data_prev=data_prev
-            # changed_data_latest = pd.DataFrame([header,"Deleted Colum"],columns=["Header","Info"])
+            changed_data_prev = data_prev
+            changed_data_latest = "Deleted Header"
         elif 1 == 2:  # TODO header was added in latest version
             pass
         elif data_prev.columns.to_list() != data_latest.columns.to_list():  # check for added columns
-            print(f"Latest version hass added/deleted columns in the header {header}",len(data_latest),len(data_prev))
-            changed_data_latest=data_latest
-            changed_data_prev=data_prev
-            # if not all([col in data_latest.columns.to_list() for col in data_prev.columns.to_list()]): # some col was deleted
-            #     output_data[header] = pd.concat([data_latest,data_latest.add_suffix('_previous')],axis=1)
+            print(f"Latest version hass added/deleted columns in the header {header}", len(data_latest), len(data_prev))
+            changed_data_latest = data_latest
+            changed_data_prev = data_prev
+
         else:  # test what rows was changed or deleted from prev
             delete_indexs_prev = []
             delete_indexs_latest = []
             for prev_ind, row_prev in enumerate(data_prev.values):
-                # print("\n\n", prev_ind)
                 if row_prev.tolist() in data_latest.values.tolist():
                     latest_ind = data_latest.values.tolist().index(row_prev.tolist())
-                    # if latest_ind in delete_indexs_latest: # Solution for duplicates of rows # TODO its plaster
-                    #     latest_ind = data_latest[latest_ind:].values.tolist().index(row_prev.tolist())
+
                     delete_indexs_latest.append(latest_ind)
                     delete_indexs_prev.append(prev_ind)
-                    # print(latest_ind)
-                    # if latest_ind!=prev_ind: # TODO TO-NOTE i(chen) am not recording change in order of rows in a single table or reorder of tables
-            # print(header,delete_indexs_prev,delete_indexs_latest)
-            data_prev.drop(delete_indexs_prev,inplace=True)
-            data_latest.drop(delete_indexs_latest,inplace=True)
-            changed_data_latest=data_latest
-            changed_data_prev=data_prev
-                # else:
-                #     print("changes row")
-                #     changed_data = pd.concat([changed_data, pd.DataFrame([row_prev], columns=data_latest.columns)],
-                #                              ignore_index=True)  # row changed or deleted
+
+            data_prev.drop(delete_indexs_prev, inplace=True)
+            data_latest.drop(delete_indexs_latest, inplace=True)
+            changed_data_latest = data_latest
+            changed_data_prev = data_prev
+            # else:
+            #     print("changes row")
+            #     changed_data = pd.concat([changed_data, pd.DataFrame([row_prev], columns=data_latest.columns)],
+            #                              ignore_index=True)  # row changed or deleted
 
         # if not changed_data.equals(pd.DataFrame(columns=data_latest.columns)): # [disabled] do not display empty headers
         output_data_latest[header] = changed_data_latest
         output_data_prev[header] = changed_data_prev
 
-    html_string_latest=create_html_string(output_data_latest)
-    html_string_prev=create_html_string(output_data_prev)
+    for header in latest_model:  # check for new added headers in the ICD
+        data_prev = prev_model.get(header, empty)
+        data_latest = latest_model.get(header, empty)
+        data_latest = data_latest.astype(object).replace(np.nan, None)
+        data_latest = delete_none_rows(data_latest)
+        if data_prev.equals(empty):  # header was deleted in latest deployment
+            print("New header added in latest version", header)
+            changed_data_latest = data_latest
+            changed_data_prev = "Added Header"
+            output_data_latest[header] = changed_data_latest
+            output_data_prev[header] = changed_data_prev
 
+    html_string_latest = create_html_string(output_data_latest) + "<h3>               </h3>"
+    html_string_prev = create_html_string(output_data_prev) + "<h3>               </h3>"
 
-    final_result=result_file.replace("new_file",opt.new).replace("old_file",opt.old)
-    final_result=final_result.replace("Left_Side",html_string_latest).replace("Right_Side",html_string_prev)
+    final_result = result_file.replace("new_file", opt.new).replace("old_file", opt.old)
+    final_result = final_result.replace("Left_Side", html_string_latest).replace("Right_Side", html_string_prev)
 
     with open('ICD_comparison/Final_Result.html', "w") as f:
         f.write(final_result)
-    # with open('ICD_comparison/new.html', "w") as f:
-    #     f.write(str(style[0])+f"\n<h1>Latest Version</h1>\n"+html_string_latest)
-    #
-    # with open('ICD_comparison/old.html', "w") as f:
-    #     f.write(str(style[0])+f"\n<h1>Previous Version</h1>\n"+html_string_prev)
+
 
 def open_html():
     print("Openning Final result")
@@ -226,13 +231,14 @@ def open_html():
 def get_parser():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-new", required=True,default='new_ICD_file.html', help="path to latest model html")
-    parser.add_argument("-old",required=True,default='old_ICD_file.html',  help="path to previous model html")
+    parser.add_argument("-new", required=True, default='new_ICD_file.html', help="path to latest model html")
+    parser.add_argument("-old", required=True, default='old_ICD_file.html', help="path to previous model html")
 
     args = parser.parse_args()
     return args
 
+
 if __name__ == "__main__":
-    args=get_parser()
+    args = get_parser()
     main(args)
     open_html()
