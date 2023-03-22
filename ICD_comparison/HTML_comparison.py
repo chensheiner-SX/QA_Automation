@@ -131,7 +131,7 @@ def create_html_string(df):
             if 'Unnamed' in str(col):
                 data.rename(columns={col: " "}, inplace=True)
         string_data = data.to_html()
-        if header == 'Enumerations':  # spesific cases
+        if header == 'Enumerations':  # specific cases
             string_data.replace("dataframe", "EnumTable")
         elif header == 'Detector groups/classes':
             string_data.replace("dataframe", "DetectorInfoTable")
@@ -171,25 +171,24 @@ def main(opt):
             print("header deleted in latest version", header)
             changed_data_prev = data_prev
             changed_data_latest = "Deleted Header"
-        elif 1 == 2:  # TODO header was added in latest version
-            pass
+
         elif data_prev.columns.to_list() != data_latest.columns.to_list():  # check for added columns
-            print(f"Latest version hass added/deleted columns in the header {header}", len(data_latest), len(data_prev))
+            print(f"Latest version has added/deleted columns in the header {header}", len(data_latest), len(data_prev))
             changed_data_latest = data_latest
             changed_data_prev = data_prev
 
         else:  # test what rows was changed or deleted from prev
-            delete_indexs_prev = []
-            delete_indexs_latest = []
+            delete_indexes_prev = []
+            delete_indexes_latest = []
             for prev_ind, row_prev in enumerate(data_prev.values):
                 if row_prev.tolist() in data_latest.values.tolist():
                     latest_ind = data_latest.values.tolist().index(row_prev.tolist())
 
-                    delete_indexs_latest.append(latest_ind)
-                    delete_indexs_prev.append(prev_ind)
+                    delete_indexes_latest.append(latest_ind)
+                    delete_indexes_prev.append(prev_ind)
 
-            data_prev.drop(delete_indexs_prev, inplace=True)
-            data_latest.drop(delete_indexs_latest, inplace=True)
+            data_prev.drop(delete_indexes_prev, inplace=True)
+            data_latest.drop(delete_indexes_latest, inplace=True)
             changed_data_latest = data_latest
             changed_data_prev = data_prev
             # else:
@@ -224,7 +223,7 @@ def main(opt):
 
 
 def open_html():
-    print("Openning Final result")
+    print("Opening Final result")
     webbrowser.open_new_tab("ICD_comparison/Final_Result.html")
 
 
@@ -234,8 +233,8 @@ def get_parser():
     parser.add_argument("-new", required=True, default='new_ICD_file.html', help="path to latest model html")
     parser.add_argument("-old", required=True, default='old_ICD_file.html', help="path to previous model html")
 
-    args = parser.parse_args()
-    return args
+    options = parser.parse_args()
+    return options
 
 
 if __name__ == "__main__":
