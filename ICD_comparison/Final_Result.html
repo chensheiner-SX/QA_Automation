@@ -1,0 +1,1082 @@
+
+<style>
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+<!--  background-color: #111;-->
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+<!--  background-color: red;-->
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #FFF;
+}
+
+th {
+    background-color: #8900FD;
+}
+
+.EnumTable {
+    width: 30%;
+}
+
+.DetectorInfoTable {
+    width: 50%;
+}
+
+.ObjectTable {
+    width: 100%;
+}
+
+</style>
+
+<div class="split left">
+<h1>Latest Version = ICD_comparison/new_ICD_file.html</h1>
+
+    
+<h2>Enumerations</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>FlowSwitcherFlowId</td>
+      <td>GroundMwir</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NormalizationType</td>
+      <td>Disabled</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NormalizationType</td>
+      <td>HistogramEqualization</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NormalizationType</td>
+      <td>LinearTransform</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NormalizationType</td>
+      <td>MeanStdCrop</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>OsdValue</td>
+      <td>Version</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>OsdValue</td>
+      <td>Latency</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Detector groups/classes</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Detector</th>
+      <th>Group</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SeaMwirDetector</td>
+      <td>jetski</td>
+      <td>jetski</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SeaSwirDetector</td>
+      <td>jetski</td>
+      <td>jetski</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream RawSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GcSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GstSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>std::string</td>
+      <td>Source</td>
+      <td>uridecodebin uri={}</td>
+      <td></td>
+      <td></td>
+      <td>Not updatable</td>
+      <td>source pipeline part with {} marking the url</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>std::string</td>
+      <td>Url</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Not updatable</td>
+      <td>url to replace in Source string</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream FramerateController configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream Preprocessor configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>uint32_t</td>
+      <td>Roi.X</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+      <td>Not updatable</td>
+      <td>ROI to extract from the image before further processing</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>uint32_t</td>
+      <td>Roi.Width</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+      <td>Not updatable</td>
+      <td>ROI to extract from the image before further processing</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream FlowSwitcher configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream RangeEstimator configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream TracksPublisher configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream Renderer configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream PreviewModule configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GstSink configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+</div>
+
+<div class="split right" >
+<h1>Previous Version  = ICD_comparison/old_ICD_file.html</h1>
+
+    
+<h2>Enumerations</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9</th>
+      <td>FlowSwitcherFlowId</td>
+      <td>GrountwertdMwir</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NormdfgalizationType</td>
+      <td>Disabled</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NormdfgalizationType</td>
+      <td>HistogramEqualization</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NormdfgalizationType</td>
+      <td>LinearTransform</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NormdfgalizationType</td>
+      <td>MeanStdCrop</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>OsdValue</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>OsdValue</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h2>Detector groups/classes</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Detector</th>
+      <th>Group</th>
+      <th>Classes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SeaMwirDetector</td>
+      <td>fgdfg</td>
+      <td>jetski</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SeaSwirDetector</td>
+      <td>jetski</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream RawSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GcSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GstSource configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>std::string</td>
+      <td>Source</td>
+      <td>uridecodebin uri={}</td>
+      <td></td>
+      <td></td>
+      <td>source pipeline part with {} marking the url</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>std::string</td>
+      <td>Url</td>
+      <td></td>
+      <td>f</td>
+      <td></td>
+      <td>url to replace in Source string</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream FramerateController configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream Preprocessor configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>uint32_t</td>
+      <td>Roi.X</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+      <td>Not updatable</td>
+      <td>ROI to extract from the image before further processing</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>uint32_t</td>
+      <td>Roi.Width</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+      <td>Not updatable</td>
+      <td>ROI to extract from the image before further processing</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Stream FlowSwitcher configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirDetector configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirTrackerRate configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaMwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream SeaSwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundMwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GroundRgbSwirTracker configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream RangeEstimator configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream TracksPublisher configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream Renderer configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream PreviewModule configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<h2>Stream GstSink configuration</h2>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+      <th>Updatable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+</div>

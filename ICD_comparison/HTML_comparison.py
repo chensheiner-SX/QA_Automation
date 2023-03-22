@@ -3,7 +3,87 @@ import requests
 from bs4 import BeautifulSoup
 import numpy as np
 import argparse
+import webbrowser
 
+
+result_file="""
+<style>
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+<!--  background-color: #111;-->
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+<!--  background-color: red;-->
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #FFF;
+}
+
+th {
+    background-color: #8900FD;
+}
+
+.EnumTable {
+    width: 30%;
+}
+
+.DetectorInfoTable {
+    width: 50%;
+}
+
+.ObjectTable {
+    width: 100%;
+}
+
+</style>
+
+<div class="split left">
+<h1>Latest Version = new_file</h1>
+
+    Left_Side
+
+</div>
+
+<div class="split right" >
+<h1>Previous Version  = old_file</h1>
+
+    Right_Side
+
+</div>
+"""
 def delete_tags(item):
     output = item.string
     return output
@@ -59,9 +139,9 @@ def create_html_string(df):
 
 
 def main(opt):
-    # path_latest = "module_parameters.html"
+    # path_latest = "new_ICD_file.html"
     path_latest = opt.new
-    # path_prev = "deleted_lines.html"
+    # path_prev = "old_ICD_file.html"
     path_prev =  opt.old
     latest_model,style = get_data(path_latest)
     prev_model,_ = get_data(path_prev)
@@ -125,20 +205,29 @@ def main(opt):
 
     html_string_latest=create_html_string(output_data_latest)
     html_string_prev=create_html_string(output_data_prev)
-    with open('new.html', "w") as f:
-        f.write(str(style[0])+f"\n<h1>Latest Version</h1>\n"+html_string_latest)
-
-    with open('old.html', "w") as f:
-        f.write(str(style[0])+f"\n<h1>Previous Version</h1>\n"+html_string_prev)
 
 
+    final_result=result_file.replace("new_file",opt.new).replace("old_file",opt.old)
+    final_result=final_result.replace("Left_Side",html_string_latest).replace("Right_Side",html_string_prev)
+
+    with open('ICD_comparison/Final_Result.html', "w") as f:
+        f.write(final_result)
+    # with open('ICD_comparison/new.html', "w") as f:
+    #     f.write(str(style[0])+f"\n<h1>Latest Version</h1>\n"+html_string_latest)
+    #
+    # with open('ICD_comparison/old.html', "w") as f:
+    #     f.write(str(style[0])+f"\n<h1>Previous Version</h1>\n"+html_string_prev)
+
+def open_html():
+    print("Openning Final result")
+    webbrowser.open_new_tab("ICD_comparison/Final_Result.html")
 
 
 def get_parser():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-new", required=True,default='module_parameters.html', help="path to latest model html")
-    parser.add_argument("-old",required=True,default='deleted_lines.html',  help="path to previous model html")
+    parser.add_argument("-new", required=True,default='new_ICD_file.html', help="path to latest model html")
+    parser.add_argument("-old",required=True,default='old_ICD_file.html',  help="path to previous model html")
 
     args = parser.parse_args()
     return args
@@ -146,3 +235,4 @@ def get_parser():
 if __name__ == "__main__":
     args=get_parser()
     main(args)
+    open_html()
