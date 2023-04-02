@@ -143,6 +143,19 @@ def create_html_string(df):
 
     return html_string
 
+def clean_columns(data,dropped_columns):
+    for col in dropped_columns:
+        if col in data.columns:
+            data.drop(col,axis=1,inplace=True)
+            print(f"dropping {col}")
+    return data
+
+def data_preprocess(data):
+    data = data.astype(object).replace(np.nan, None)
+    data = delete_none_rows(data)
+    data=clean_columns(data,["Updatable","Description"])
+
+    return data
 
 def main(opt):
     # path_latest = "new_ICD_file.html"
@@ -159,10 +172,8 @@ def main(opt):
         # header = 'Stream GstSink configuration'
         data_prev = prev_model.get(header, empty)  # every header has a tables corresponding to it
         data_latest = latest_model.get(header, empty)
-        data_prev = data_prev.astype(object).replace(np.nan, None)
-        data_latest = data_latest.astype(object).replace(np.nan, None)
-        data_latest = delete_none_rows(data_latest)
-        data_prev = delete_none_rows(data_prev)
+        data_prev=data_preprocess(data_prev)
+        data_latest=data_preprocess(data_latest)
 
         assert not data_prev.equals(
             empty), f"Every Header should have a tables corresponding to it, {header} in previous version"
@@ -203,8 +214,9 @@ def main(opt):
     for header in latest_model:  # check for new added headers in the ICD
         data_prev = prev_model.get(header, empty)
         data_latest = latest_model.get(header, empty)
-        data_latest = data_latest.astype(object).replace(np.nan, None)
-        data_latest = delete_none_rows(data_latest)
+        data_prev=data_preprocess(data_prev)
+        data_latest=data_preprocess(data_latest)
+
         if data_prev.equals(empty):  # header was deleted in latest deployment
             print("New header added in latest version", header)
             changed_data_latest = data_latest
@@ -212,8 +224,8 @@ def main(opt):
             output_data_latest[header] = changed_data_latest
             output_data_prev[header] = changed_data_prev
 
-    html_string_latest = create_html_string(output_data_latest) + "<h3>               </h3>"
-    html_string_prev = create_html_string(output_data_prev) + "<h3>               </h3>"
+    html_string_latest = create_html_string(output_data_latest) + "<h3>        END       </h3>"
+    html_string_prev = create_html_string(output_data_prev) + "<h3>       END        </h3>"
 
     final_result = result_file.replace("new_file", opt.new).replace("old_file", opt.old)
     final_result = final_result.replace("Left_Side", html_string_latest).replace("Right_Side", html_string_prev)
