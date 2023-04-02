@@ -230,7 +230,7 @@ def main(opt):
     final_result = result_file.replace("new_file", opt.new).replace("old_file", opt.old)
     final_result = final_result.replace("Left_Side", html_string_latest).replace("Right_Side", html_string_prev)
 
-    with open('ICD_comparison/Final_Result.html', "w") as f:
+    with open('Final_Result.html', "w") as f:
         f.write(final_result)
 
 
