@@ -81,6 +81,36 @@ th {
       <td>FlowSwitcherFlowId</td>
       <td>GroundMwir</td>
     </tr>
+    <tr>
+      <th>15</th>
+      <td>NormalizationType</td>
+      <td>Disabled</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NormalizationType</td>
+      <td>HistogramEqualization</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NormalizationType</td>
+      <td>LinearTransform</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NormalizationType</td>
+      <td>MeanStdCrop</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>OsdValue</td>
+      <td>Version</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>OsdValue</td>
+      <td>Latency</td>
+    </tr>
   </tbody>
 </table>
 <h2>Detector groups/classes</h2>
@@ -94,6 +124,18 @@ th {
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>SeaMwirDetector</td>
+      <td>jetski</td>
+      <td>jetski</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SeaSwirDetector</td>
+      <td>jetski</td>
+      <td>jetski</td>
+    </tr>
   </tbody>
 </table>
 <h2>Stream RawSource configuration</h2>
@@ -106,8 +148,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -123,17 +163,34 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
   </tbody>
 </table>
 <h2>Stream GstSource configuration</h2>
-
-<h4>Deleted Header</h4>
-
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Type</th>
+      <th>SDK name</th>
+      <th>Default value</th>
+      <th>Min allowed value</th>
+      <th>Max allowed value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>std::string</td>
+      <td>Url</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 <h2>Stream FramerateController configuration</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -144,8 +201,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -161,11 +216,25 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>2</th>
+      <td>uint32_t</td>
+      <td>Roi.X</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>uint32_t</td>
+      <td>Roi.Width</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+    </tr>
   </tbody>
 </table>
 <h2>Stream FlowSwitcher configuration</h2>
@@ -178,8 +247,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -195,8 +262,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -212,8 +277,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -229,8 +292,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -246,8 +307,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -263,8 +322,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -280,8 +337,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -297,8 +352,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -314,8 +367,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -331,8 +382,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -348,8 +397,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -365,8 +412,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -382,8 +427,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -399,8 +442,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -416,8 +457,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -433,8 +472,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
       <th></th>
     </tr>
   </thead>
@@ -451,8 +488,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -468,50 +503,11 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
   </tbody>
-</table>
-<h2>Stream GstSource confiljnlnljguration</h2>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Type</th>
-      <th>SDK name</th>
-      <th>Default value</th>
-      <th>Min allowed value</th>
-      <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>std::string</td>
-      <td>Source</td>
-      <td>uridecodebin uri={}</td>
-      <td></td>
-      <td></td>
-      <td>Not updatable</td>
-      <td>source pipeline part with {} marking the url</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>std::string</td>
-      <td>Url</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Not updatable</td>
-      <td>url to replace in Source string</td>
-    </tr>
-  </tbody>
-</table><h3>               </h3>
+</table><h3>        END       </h3>
 
 </div>
 
@@ -534,6 +530,36 @@ th {
       <td>FlowSwitcherFlowId</td>
       <td>GrountwertdMwir</td>
     </tr>
+    <tr>
+      <th>15</th>
+      <td>NormdfgalizationType</td>
+      <td>Disabled</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NormdfgalizationType</td>
+      <td>HistogramEqualization</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NormdfgalizationType</td>
+      <td>LinearTransform</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NormdfgalizationType</td>
+      <td>MeanStdCrop</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>OsdValue</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>OsdValue</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 <h2>Detector groups/classes</h2>
@@ -547,6 +573,18 @@ th {
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>SeaMwirDetector</td>
+      <td>fgdfg</td>
+      <td>jetski</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SeaSwirDetector</td>
+      <td>jetski</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 <h2>Stream RawSource configuration</h2>
@@ -559,8 +597,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -576,8 +612,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -593,30 +627,16 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>0</th>
-      <td>std::string</td>
-      <td>Source</td>
-      <td>uridecodebin uri={}</td>
-      <td></td>
-      <td></td>
-      <td>Not updatable</td>
-      <td>source pipeline part with {} marking the url</td>
-    </tr>
     <tr>
       <th>1</th>
       <td>std::string</td>
       <td>Url</td>
       <td></td>
+      <td>f</td>
       <td></td>
-      <td></td>
-      <td>Not updatable</td>
-      <td>url to replace in Source string</td>
     </tr>
   </tbody>
 </table>
@@ -630,8 +650,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -647,11 +665,25 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>2</th>
+      <td>uint32_t</td>
+      <td>Roi.X</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>uint32_t</td>
+      <td>Roi.Width</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>8192.0</td>
+    </tr>
   </tbody>
 </table>
 <h2>Stream FlowSwitcher configuration</h2>
@@ -664,8 +696,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -681,8 +711,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -698,8 +726,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -715,8 +741,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -732,8 +756,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -749,8 +771,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -766,8 +786,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -783,8 +801,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -800,8 +816,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -817,8 +831,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -834,8 +846,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -851,8 +861,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -868,8 +876,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -885,8 +891,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -902,8 +906,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -919,8 +921,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
       <th></th>
     </tr>
   </thead>
@@ -937,8 +937,6 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
@@ -954,16 +952,10 @@ th {
       <th>Default value</th>
       <th>Min allowed value</th>
       <th>Max allowed value</th>
-      <th>Updatable</th>
-      <th>Description</th>
     </tr>
   </thead>
   <tbody>
   </tbody>
-</table>
-<h2>Stream GstSource confiljnlnljguration</h2>
-
-<h4>Added Header</h4>
-<h3>               </h3>
+</table><h3>       END        </h3>
 
 </div>
